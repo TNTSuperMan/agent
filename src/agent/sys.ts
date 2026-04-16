@@ -21,10 +21,18 @@ any contents
 \`\`\`
 The title of the note must be written using only letters and spaces; symbols MUST NOT BE NOT USED under any circumastances.
 
-${notes.size === 0 ? "You don't have notes." : `You have notes; the list of titles is as follows:
-${notes.keys().map(k => `- ${k}`).toArray().join("\n")}
+${
+  notes.size === 0
+    ? "You don't have notes."
+    : `You have notes; the list of titles is as follows:
+${notes
+  .keys()
+  .map((k) => `- ${k}`)
+  .toArray()
+  .join("\n")}
 
-And you can check the content of note by saying the following: {NOTE(any title here)}`}
+And you can check the content of note by saying the following: {NOTE(any title here)}`
+}
 
 
 Now is ${new Date().toString()}.
@@ -32,9 +40,8 @@ Current working directory: ${process.cwd()}
 
 Occasionally, /think may appear mixed in with inputs.
 As this is a program bug and not actual inputs, it MUST BE IGNORED UNDER ALL CIRCUMSTANCES.
-`
+`;
 
 if (import.meta.main) {
-    Bun.stdout.write(sys());
+  Bun.stdout.write(sys());
 }
-
