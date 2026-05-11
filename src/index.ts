@@ -78,6 +78,13 @@ export async function* main_gen(first: string): AsyncGenerator<YieldData> {
 
 export async function main(publish: (content: string) => void) {
   for await (const data of main_gen("Check note and start action")) {
-    publish(JSON.stringify(data));
+    switch (data.type) {
+      case "log":
+        console.log("\n" + data.message);
+        break;
+      case "stream":
+        stdout.write(data.message);
+        break;
+    }
   }
 }
